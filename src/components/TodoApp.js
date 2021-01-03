@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TodoAddForm from './todo/TodoAddForm';
 import TodoItem from './todo/TodoItem';
+import styled from '@emotion/styled';
 
 function TodoApp(props) {
   // { id, text: string, completed: bool, edited: bool }
@@ -19,9 +20,6 @@ function TodoApp(props) {
 
   //----------------------- GET待辦事項清單------------------------//
   async function getTodoFromServer() {
-    // 開啟載入的指示圖示
-    // setDataLoading(true);
-
     const url = 'http://localhost:5555/todo';
     // const url = 'http://localhost:5555/todo?_sort=createdAt&_order=desc';
     const request = new Request(url, {
@@ -40,55 +38,8 @@ function TodoApp(props) {
     getTodoFromServer();
   }, []);
 
-  //   // 每次todoItems資料有改變，2秒後關閉載入指示
-  // useEffect(() => {
-  //   setTimeout(() => setDataLoading(false), 1500);
-  // }, [todoItems]);
-
-  // const loading = (
-  //   <div className="spinner-grow" role="status">
-  //     <span className="sr-only">Loading...</span>
-  //   </div>
-  // );
-  // const loading = (
-  //   <>
-  //     <div className="d-flex justify-content-center">
-  //       <div className="spinner-border" role="status">
-  //         <span className="sr-only">Loading...</span>
-  //       </div>
-  //     </div>
-  //   </>
-  // )
-
-  // const display = <></>;
-
-  //   // 以資料載入的指示狀態來切換要出現的畫面
-  //   return dataLoading ? loading : display
-  // }
-  //----------------------- PUT待辦事項--------------------------//
-  async function putTodoToServer(ItemId, editedItem) {
-    // 開啟載入的指示圖示
-    // setDataLoading(true);
-
-    const url = `http://localhost:5555/todo/${ItemId}`;
-
-    const request = new Request(url, {
-      method: 'PUT',
-      body: JSON.stringify(editedItem),
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }),
-    });
-
-    const response = await fetch(request);
-    const data = await response.json();
-
-    console.log(data);
-    getTodoFromServer();
-  }
   //----------------------- DELETE待辦事項--------------------------//
-  async function deleteTodoToServer(ItemId, editedItem) {
+  async function deleteTodoToServer(ItemId) {
     // 開啟載入的指示圖示
     // setDataLoading(true);
 
@@ -96,7 +47,7 @@ function TodoApp(props) {
 
     const request = new Request(url, {
       method: 'DELETE',
-      body: JSON.stringify(editedItem),
+      body: JSON.stringify(),
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -111,61 +62,82 @@ function TodoApp(props) {
   }
   //--------------------------- handler -----------------------------//
 
-  // 編輯項目－編輯
-  const handleEditedToggle = (id) => {
-    const newTodoItems = [...todoItems];
-    const todoItemIndex = newTodoItems.findIndex((item) => item.id === id);
-
-    if (todoItemIndex !== -1) {
-      newTodoItems[todoItemIndex].edited = !newTodoItems[todoItemIndex].edited;
-      setTodoItems(newTodoItems);
-    }
-  };
-
-  // 編輯項目-儲存
-  const handleEditedSave = (id, newMemo) => {
-    const newTodoItems = [...todoItems];
-    const todoItemIndex = newTodoItems.findIndex((item) => item.id === id);
-    if (todoItemIndex !== -1) {
-      // newTodoItems[todoItemIndex].memo = newMemo;
-      // setTodoItems(newTodoItems);
-      newTodoItems[todoItemIndex].memo = newMemo;
-      const newTodoItem = newTodoItems[todoItemIndex];
-      handleEditedToggle(id);
-      putTodoToServer(id, newTodoItem);
-    }
-  };
-
   // 刪除項目
   const handleDelete = (id) => {
-    // const newTodoItems = todoItems.filter((item, index) => item.id !== id);
-    // setTodoItems(newTodoItems);
     deleteTodoToServer(id);
   };
 
-  //--------------------------------------------------------------------//
+  //-----------------------------style----------------------------------//
+  const WeatherCardWrapper = styled.div`
+    margin-top: 100px;
+    position: relative;
+    min-width: 400px;
+    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.15);
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      width: 300px;
+      padding: 20px 20px;
+      border-radius: 10px;
+    }
+    li:hover {
+      background-color: #e8ebed;
+    }
+    h1 {
+      margin-top: 5px;
+    }
+    input {
+      outline: none;
+      box-sizing: border-box;
+      background-color: #e8ebed;
+      border-radius: 10px;
+      padding: 0 15px 0 15px;
+      height: 45px;
+      width: 300px;
+      border: none;
+    }
+    input:hover {
+      background-color: #d4d7da;
+    }
+    input:focus {
+      background-color: #f9f9f9;
+      border: 2px solid #d4d7da;
+    }
+  `;
 
   return (
     <>
-      <h1 className="mt-5">範例：待辨事項</h1>
-      <TodoAddForm
-        todoInput={todoInput}
-        setTodoInput={setTodoInput}
-        todoItems={todoItems}
-        setTodoItems={setTodoItems}
-        getTodoFromServer={getTodoFromServer}
-      />
-      <hr />
-      <ul>
-        {todoItems.map((item, index) => (
-          <TodoItem
-            key={item.id}
-            todoItem={item}
-            handleDelete={handleDelete}
-            {...props}
-          />
-        ))}
-      </ul>
+      <WeatherCardWrapper>
+        <h1>Todos</h1>
+        <TodoAddForm
+          todoInput={todoInput}
+          setTodoInput={setTodoInput}
+          todoItems={todoItems}
+          setTodoItems={setTodoItems}
+          getTodoFromServer={getTodoFromServer}
+        />
+        <br />
+        <ul>
+          {todoItems.map((item, index) => (
+            <TodoItem
+              key={item.id}
+              todoItem={item}
+              handleDelete={handleDelete}
+            />
+          ))}
+        </ul>
+      </WeatherCardWrapper>
     </>
   );
 }

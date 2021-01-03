@@ -35,6 +35,7 @@ function TodoAddForm(props) {
       <input
         type="text"
         value={todoInput}
+        autoFocus
         onChange={(e) => setTodoInput(e.target.value)}
         onKeyPress={(e) => {
           //處理按下Enter
