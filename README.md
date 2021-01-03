@@ -1,5 +1,7 @@
 # todo_app
 
-# 啟動：json-server --watch --port 5555 db.json
+# 安裝：yarn install
 
-# 獲取網址 http://localhost:5555
+# 啟動：yarn start
+
+# 啟動：json-server --watch --port 5555 db.json

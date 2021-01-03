@@ -98,25 +98,32 @@ function TodoApp(props) {
       box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
       transition: 0.3s;
     }
-    svg {
+    li svg {
       ${'' /* display: block; */}
       display: none;
       position: absolute;
-      top: -5px;
-      right: -5px;
+      top: -7px;
+      right: -10px;
       color: #e56a77;
       font-size: 30px;
       cursor: pointer;
-    }
-    li:hover svg {
-      display: block;
       transition: 0.3s;
+    }
+    li:hover .cross > svg {
+      display: block;
+
+      transition: 0.3s;
+    }
+    li svg:active {
+      color: #c55661;
+      font-size: 35px;
+      transition: 0s;
     }
     h1 {
       margin-top: 5px;
     }
-    li :first-child {
-      font-size: 20px;
+    li div:first-child {
+      font-size: 18px;
       word-break: normal;
       word-wrap: break-word;
       text-overflow: ellipsis;
@@ -132,6 +139,7 @@ function TodoApp(props) {
       transition: 0.3s;
     }
     li span {
+      font-size: 14px;
       margin-bottom: 10px;
     }
     li :nth-last-child(2) {

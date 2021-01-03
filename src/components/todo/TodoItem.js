@@ -10,7 +10,7 @@ function TodoItem(props) {
     <>
       <li>
         <div>{todoItem.memo}</div>
-        {todoItem.address && <span>address:{todoItem.address}</span>}
+        {todoItem.address && <span>Address:{todoItem.address}</span>}
         <div>
           memo created at :<span> </span>
           {new Intl.DateTimeFormat('zh-TW', {
@@ -22,7 +22,7 @@ function TodoItem(props) {
           }).format(dayjs(todoItem.createdAt))}
         </div>
 
-        <div className="icon" onClick={() => handleDelete(todoItem.id)}>
+        <div className="cross" onClick={() => handleDelete(todoItem.id)}>
           <FontAwesomeIcon icon={faTimesCircle} />
         </div>
       </li>
