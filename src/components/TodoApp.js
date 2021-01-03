@@ -137,6 +137,7 @@ function TodoApp(props) {
     li :nth-last-child(2) {
       font-size: 12px;
       float: right;
+      color: #858585;
     }
     input {
       outline: none;

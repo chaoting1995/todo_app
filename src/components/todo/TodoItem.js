@@ -12,7 +12,7 @@ function TodoItem(props) {
         <div>{todoItem.memo}</div>
         {todoItem.address && <span>address:{todoItem.address}</span>}
         <div>
-          memo created at:
+          memo created at :<span> </span>
           {new Intl.DateTimeFormat('zh-TW', {
             year: 'numeric',
             month: 'numeric',
