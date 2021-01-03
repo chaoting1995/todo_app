@@ -88,14 +88,55 @@ function TodoApp(props) {
       box-sizing: border-box;
       margin-bottom: 10px;
       width: 300px;
-      padding: 20px 20px;
+      padding: 20px 20px 30px 20px;
       border-radius: 10px;
+      position: relative;
+      background-color: #ededed9a;
     }
     li:hover {
-      background-color: #e8ebed;
+      background-color: #f9f9f9;
+      box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+      transition: 0.3s;
+    }
+    svg {
+      ${'' /* display: block; */}
+      display: none;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      color: #e56a77;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    li:hover svg {
+      display: block;
+      transition: 0.3s;
     }
     h1 {
       margin-top: 5px;
+    }
+    li :first-child {
+      font-size: 20px;
+      word-break: normal;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: 0.3s;
+      margin-bottom: 10px;
+    }
+    li:hover :first-child {
+      text-overflow: clip;
+      overflow: visible;
+      white-space: normal;
+      transition: 0.3s;
+    }
+    li span {
+      margin-bottom: 10px;
+    }
+    li :nth-last-child(2) {
+      font-size: 12px;
+      float: right;
     }
     input {
       outline: none;

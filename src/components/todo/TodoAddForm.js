@@ -33,6 +33,7 @@ function TodoAddForm(props) {
   return (
     <>
       <input
+        placeholder="type a new memo"
         type="text"
         value={todoInput}
         autoFocus
@@ -44,7 +45,6 @@ function TodoAddForm(props) {
               id: `___AX${+new Date()}`,
               createdAt: new Date(),
               memo: e.target.value,
-              edited: false,
             };
             // const newTodoItems = [newItem, ...todoItems];
             // setTodoItems(newTodoItems);
