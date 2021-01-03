@@ -70,6 +70,7 @@ function TodoApp(props) {
   //-----------------------------style----------------------------------//
   const WeatherCardWrapper = styled.div`
     margin-top: 100px;
+    margin-bottom: 100px;
     position: relative;
     min-width: 400px;
     box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.15);
