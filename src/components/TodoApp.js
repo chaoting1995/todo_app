@@ -171,14 +171,6 @@ function TodoApp(props) {
     <>
       <WeatherCardWrapper>
         <h1>Todos</h1>
-        <TodoAddForm
-          todoInput={todoInput}
-          setTodoInput={setTodoInput}
-          todoItems={todoItems}
-          setTodoItems={setTodoItems}
-          getTodoFromServer={getTodoFromServer}
-        />
-        <br />
         <ul>
           {todoItems.map((item, index) => (
             <TodoItem
@@ -188,6 +180,14 @@ function TodoApp(props) {
             />
           ))}
         </ul>
+        <br />
+        <TodoAddForm
+          todoInput={todoInput}
+          setTodoInput={setTodoInput}
+          todoItems={todoItems}
+          setTodoItems={setTodoItems}
+          getTodoFromServer={getTodoFromServer}
+        />
       </WeatherCardWrapper>
     </>
   );
