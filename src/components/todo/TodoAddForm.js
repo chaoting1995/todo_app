@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import styled from '@emotion/styled';
 
 function TodoAddForm(props) {
-  const {
-    todoInput,
-    setTodoInput,
-    todoItems,
-    setTodoItems,
-    getTodoFromServer,
-  } = props;
+  const { todoInput, setTodoInput, getTodoFromServer } = props;
+  //  todoInput, setTodoInput,
+  // handleCreate
+
+  //輸入項目
+  // const [todoInput, setTodoInput] = useState('');
 
   async function postTodoToServer(newData) {
     // 開啟載入的指示圖示
@@ -36,12 +35,16 @@ function TodoAddForm(props) {
 
   return (
     <>
+      {console.log('重新render')}
       <input
         placeholder="type a new memo"
         type="text"
         value={todoInput}
-        autoFocus
-        onChange={(e) => setTodoInput(e.target.value)}
+        // autoFocus
+        // onChange={handleCreate}
+        onChange={(e) => {
+          setTodoInput(e.target.value);
+        }}
         onKeyPress={(e) => {
           //處理按下Enter
           if (e.key === 'Enter' && e.target.value) {

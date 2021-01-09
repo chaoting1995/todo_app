@@ -12,7 +12,7 @@ function TodoApp(props) {
   //   edited: bool,
   // };
   //-------------------------- 狀態設定----------------------------//
-  //輸入項目
+  // 輸入項目
   const [todoInput, setTodoInput] = useState('');
   //項目清單
   const [todoItems, setTodoItems] = useState([]);
@@ -66,7 +66,10 @@ function TodoApp(props) {
   const handleDelete = (id) => {
     deleteTodoToServer(id);
   };
-
+  //新增項目
+  const handleCreate = (e) => {
+    setTodoInput(e.target.value);
+  };
   //-----------------------------style----------------------------------//
   const WeatherCardWrapper = styled.div`
     margin-top: 100px;
@@ -123,7 +126,7 @@ function TodoApp(props) {
     h1 {
       margin-top: 5px;
     }
-    li div:first-child {
+    li div:first-of-type {
       font-size: 18px;
       word-break: normal;
       word-wrap: break-word;
@@ -133,7 +136,7 @@ function TodoApp(props) {
       transition: 0.3s;
       margin-bottom: 10px;
     }
-    li:hover :first-child {
+    li:hover :first-of-type {
       text-overflow: clip;
       overflow: visible;
       white-space: normal;
@@ -143,7 +146,7 @@ function TodoApp(props) {
       font-size: 14px;
       margin-bottom: 10px;
     }
-    li :nth-last-child(2) {
+    li :nth-last-of-type(2) {
       font-size: 12px;
       float: right;
       color: #858585;
@@ -182,10 +185,11 @@ function TodoApp(props) {
         </ul>
         <br />
         <TodoAddForm
+          // handleCreate={handleCreate}
           todoInput={todoInput}
           setTodoInput={setTodoInput}
-          todoItems={todoItems}
-          setTodoItems={setTodoItems}
+          // todoItems={todoItems}
+          // setTodoItems={setTodoItems}
           getTodoFromServer={getTodoFromServer}
         />
       </WeatherCardWrapper>
