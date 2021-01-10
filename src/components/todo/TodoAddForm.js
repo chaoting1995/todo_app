@@ -42,9 +42,7 @@ function TodoAddForm(props) {
         value={todoInput}
         // autoFocus
         // onChange={handleCreate}
-        onChange={(e) => {
-          setTodoInput(e.target.value);
-        }}
+        onChange={(e) => setTodoInput(e.target.value)}
         onKeyPress={(e) => {
           //處理按下Enter
           if (e.key === 'Enter' && e.target.value) {

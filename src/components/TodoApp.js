@@ -172,6 +172,7 @@ function TodoApp(props) {
 
   return (
     <>
+      {console.log('App render')}
       <WeatherCardWrapper>
         <h1>Todos</h1>
         <ul>

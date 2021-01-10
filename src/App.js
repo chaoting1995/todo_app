@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoApp from './components/TodoApp';
+// import TodoApp2 from './components2/TodoApp2';
 
 import styled from '@emotion/styled';
 
@@ -23,6 +24,7 @@ function App() {
     <>
       <Container>
         <TodoApp />
+        {/* <TodoApp2 /> */}
       </Container>
     </>
   );
