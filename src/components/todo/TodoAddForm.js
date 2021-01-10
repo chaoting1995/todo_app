@@ -5,18 +5,12 @@ import styled from '@emotion/styled';
 
 function TodoAddForm(props) {
   const { todoInput, setTodoInput, getTodoFromServer } = props;
-  //  todoInput, setTodoInput,
-  // handleCreate
-
-  //輸入項目
-  // const [todoInput, setTodoInput] = useState('');
 
   async function postTodoToServer(newData) {
     // 開啟載入的指示圖示
     // setDataLoading(true);
 
     const url = 'http://localhost:5555/todo';
-
     const request = new Request(url, {
       method: 'POST',
       body: JSON.stringify(newData),
@@ -40,8 +34,6 @@ function TodoAddForm(props) {
         placeholder="type a new memo"
         type="text"
         value={todoInput}
-        // autoFocus
-        // onChange={handleCreate}
         onChange={(e) => setTodoInput(e.target.value)}
         onKeyPress={(e) => {
           //處理按下Enter
@@ -51,10 +43,7 @@ function TodoAddForm(props) {
               createdAt: new Date(),
               memo: e.target.value,
             };
-            // const newTodoItems = [newItem, ...todoItems];
-            // setTodoItems(newTodoItems);
             postTodoToServer(newItem);
-
             setTodoInput('');
           }
         }}
