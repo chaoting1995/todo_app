@@ -170,7 +170,6 @@ function TodoApp(props) {
 
   return (
     <>
-      {/* {console.log('App render')} */}
       <WeatherCardWrapper>
         <h1>Todos</h1>
         <ul>
@@ -186,19 +185,7 @@ function TodoApp(props) {
         <TodoAddForm
           todoInput={todoInput}
           setTodoInput={setTodoInput}
-          // todoItems={todoItems}
-          // setTodoItems={setTodoItems}
           getTodoFromServer={getTodoFromServer}
-        />
-        <h1>aaa</h1>
-        <input
-          // key={Math.random()}
-          placeholder="type a new memo"
-          type="text"
-          value={todoInput}
-          // autoFocus
-          // onChange={handleCreate}
-          onChange={(e) => setTodoInput(e.target.value)}
         />
       </WeatherCardWrapper>
     </>
